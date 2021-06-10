@@ -13,6 +13,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.set('port', process.env.PORT || 5000);
+
+console.log("+++++++++++++++"+ app.get('port'));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -39,3 +43,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+app.listen(app.get('port'), function(){
+          console.log('Express server listening on port ' + app.get('port'));
+          });
